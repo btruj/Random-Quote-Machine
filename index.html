@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <script>
+        const QUOTEBANK = [
+          { quote: "Life is what happens when you're busy making other plans.",
+            author: "John Lennon"},
+            { quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+            author: "Nelson Mandela"},
+            { quote: "The future belongs to those who believe in the beauty of their dreams",
+            author: "Eleanor Roosevelt"}
+        ];
+        window.onload = init;
+        function init() {
+            generateQuote()
+        }
+
+        function generateQuote() {
+            let quoteSize = QUOTEBANK.length;
+            let randomIndex = Math.floor(Math.random() * quoteSize);
+            let randomQuoteData = QUOTEBANK[randomIndex];
+
+            let twitterLink ="https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=%22"
+
+            //add the quote
+            let quoteInApiFormat = randomQuoteData.quote.replace(/ /g, "%20")
+            twitterLink += quoteInApiFormat
+            //add the author
+            let authorInApiFormat = randomQuoteData.author.replace(/ /g, "%20")
+            twitterLink += authorInApiFormat
+
+
+            document.getElementById("tweet-quote").href = twitterLink;
+            document.getElementById("text").innerText = randomQuoteData.quote;
+           document.getElementById("author").innerText = randomQuoteData.author;
+        }
+    </script>
+<style>
+    *{
+        font-size: 2rem;
+    }
+</style>
+</head>
+
+<body>
+<wrapper id="quote-box">
+    <div id="text"></div>
+    <div id="author"></div>
+    <button id="new-quote" onClick="generateQuote();">New Quote</button>
+    <a href="#" id="tweet-quote" target="_blank">Tweet Quote</a>
+</wrapper>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"> </script>
+</body>
+
+</html>
