@@ -1,1 +1,1 @@
-## [A Random Quote Generator] (https://btruj.github.io/Random-Quote-Machine/)
+## A Random Quote Generator
